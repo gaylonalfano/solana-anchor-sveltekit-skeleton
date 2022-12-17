@@ -1,8 +1,18 @@
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
+  import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
+
+</script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center">
 		<h2 class="font-bold">Welcome to Skeleton.</h2>
+
+    {#if $walletStore?.connected}
+      <div>Wallet is connected!</div>
+    {/if}
+
+
 		<!-- Animated Logo -->
 		<figure>
 			<section class="img-bg" />
