@@ -36,5 +36,11 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@solana/spl-token": "^0.3.6",
+		"@solana/wallet-adapter-base": "^0.9.20",
+		"@solana/wallet-adapter-wallets": "^0.19.9",
+		"@solana/web3.js": "^1.70.1"
+	}
 }
