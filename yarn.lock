@@ -99,6 +99,13 @@
     "eventemitter3" "^4.0.7"
     "svelte" "^3.0.0"
 
+"@svelte-on-solana/wallet-adapter-ui@^1.0.21-alpha.0":
+  "integrity" "sha512-rKTgR5FJDdStALAP2lliqSBLNLlKmpOV3FUK/653zAlGx9nqaewDntn72adXB76QnRXJCksKGZGAaTfftDHfjw=="
+  "resolved" "https://registry.npmjs.org/@svelte-on-solana/wallet-adapter-ui/-/wallet-adapter-ui-1.0.21-alpha.0.tgz"
+  "version" "1.0.21-alpha.0"
+  dependencies:
+    "eventemitter3" "^4.0.7"
+
 "@types/bn.js@^5.1.0":
   "integrity" "sha512-qNrYbZqMx0uJAfKnKclPh+dTwK33KfLHYqtyODwd5HnXOjnkhc4qgn3BrK6RWyGZm5+sIFE7Q7Vz6QQtJB7w7g=="
   "resolved" "https://registry.npmjs.org/@types/bn.js/-/bn.js-5.1.1.tgz"
