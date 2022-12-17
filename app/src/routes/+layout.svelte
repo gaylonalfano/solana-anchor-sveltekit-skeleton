@@ -3,6 +3,7 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+  import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 </script>
 
 <!-- App Shell -->
