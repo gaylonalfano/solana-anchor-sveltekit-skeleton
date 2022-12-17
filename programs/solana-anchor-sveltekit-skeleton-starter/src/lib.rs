@@ -7,6 +7,7 @@ pub mod solana_anchor_sveltekit_skeleton_starter {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+        msg!("Initialized!");
         Ok(())
     }
 }
