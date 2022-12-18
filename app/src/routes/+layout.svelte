@@ -3,8 +3,35 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-  import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
+  import { walletStore, getLocalStorage, setLocalStorage } from '@svelte-on-solana/wallet-adapter-core';
+  import AnchorConnectionProvider from '$lib/components/AnchorConnectionProvider.svelte';
+  import { WalletProvider, WalletMultiButton } from '@svelte-on-solana/wallet-adapter-ui';
+	import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
+  import { clusterApiUrl } from '@solana/web3.js';
+  import idl from '../../../target/idl/solana_anchor_sveltekit_skeleton_starter.json';
+	import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+  import { workspaceStore } from '$lib/stores/workspace-store';
+  import { browser } from '$app/environment';
+
+
+	const localStorageKey = 'walletAdapter';
+  // const endpoint = WalletAdapterNetwork.Devnet;
+  // const network = clusterApiUrl(endpoint);
+
+	const network = 'http://localhost:8899';
+
+	let wallets = [new PhantomWalletAdapter(), new SolflareWalletAdapter()];
+
+	// Q: Needed?
+	let checked = Boolean(getLocalStorage('autoconnect', false));
+	$: autoConnect = browser && setLocalStorage('autoconnect', checked);
+
 </script>
+
+
+<!-- WalletProvider & ConnectionProvider -->
+<WalletProvider {localStorageKey} {wallets} autoConnect />
+<AnchorConnectionProvider {network} {idl} />
 
 <!-- App Shell -->
 <AppShell slotSidebarLeft="bg-surface-500/5 w-56 p-4">
