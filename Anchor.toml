@@ -1,14 +1,18 @@
 [features]
 seeds = false
 skip-lint = false
+
 [programs.localnet]
 solana_anchor_sveltekit_skeleton_starter = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 
 [registry]
 url = "https://api.apr.dev"
 
+[workspace]
+types = "app/src/idl/"  # Will copy IDL to frontend app as TS (not JSON!)
+
 [provider]
-cluster = "Localnet"
+cluster = "http://localhost:8899" #"localnet" #"devnet"
 wallet = "/Users/gaylonalfano/.config/solana/id.json"
 
 [scripts]
