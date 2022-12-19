@@ -5,5 +5,9 @@ module.exports = {
 	theme: {
 		extend: {},
 	},
-	plugins: [require('@skeletonlabs/skeleton/tailwind/theme.cjs')],
+	plugins: [
+    // Insert TW forms BEFORE Skeleton plugin
+    require('@tailwindcss/forms'),
+    require('@skeletonlabs/skeleton/tailwind/theme.cjs')
+  ],
 }

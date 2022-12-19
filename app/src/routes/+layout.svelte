@@ -39,9 +39,8 @@
 				<a class="btn btn-sm btn-ghost-surface" href="/basics">Basics</a>
 				<a
 					class="btn btn-sm btn-ghost-surface"
-					href="https://twitter.com/SkeletonUI"
-					target="_blank"
-					rel="noreferrer">Twitter</a
+					href="/pdas"
+					>PDAs</a
 				>
 				<a
 					class="btn btn-sm btn-ghost-surface"
