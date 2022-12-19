@@ -1,6 +1,6 @@
 <script lang="ts">
-	import SignMessage from '$lib/components/SignMessage.svelte';
-	import SendTransaction from '$lib/components/SendTransaction.svelte';
+	import SignMessage from '$lib/components/wallet/SignMessage.svelte';
+	import SendTransaction from '$lib/components/wallet/SendTransaction.svelte';
 	import { GradientHeading } from '@skeletonlabs/skeleton';
 </script>
 
@@ -12,7 +12,7 @@
 			from="from-primary-500"
 			to="to-accent-500">Basics</GradientHeading
 		>
-		<div class="text-center">
+		<div class="card flex flex-col space-y-4">
 			<SignMessage />
 			<SendTransaction />
 		</div>

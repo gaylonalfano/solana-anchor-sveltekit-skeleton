@@ -4,12 +4,12 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 	import { getLocalStorage } from '@svelte-on-solana/wallet-adapter-core';
-	import AnchorConnectionProvider from '$lib/components/AnchorConnectionProvider.svelte';
+	import AnchorConnectionProvider from '$lib/components/wallet/AnchorConnectionProvider.svelte';
 	import { WalletProvider, WalletMultiButton } from '@svelte-on-solana/wallet-adapter-ui';
 	import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
 	import idl from '../../../target/idl/solana_anchor_sveltekit_skeleton_starter.json';
 	import { browser } from '$app/environment';
-	import NotificationList from '$lib/components/NotificationList.svelte';
+	import NotificationList from '$lib/components/ui/NotificationList.svelte';
 	import { Toast } from '@skeletonlabs/skeleton';
 
 	const localStorageKey = 'walletAdapter';
@@ -55,8 +55,7 @@
 	<!-- Page Route Content -->
 	<slot />
 	<Toast />
-	<NotificationList />
-	<svelte:fragment slot="footer">
+	<svelte:fragment slot="pageFooter">
 		<div class="logo-cloud grid-cols-1 sm:grid-cols-3 gap-1">
       <a class="logo-item" href="https://svelte.dev/" target="_blank" rel="noreferrer">
 					<!-- <span><SvgIcon name="svelte" width="w-8" height="h-8" /></span> -->

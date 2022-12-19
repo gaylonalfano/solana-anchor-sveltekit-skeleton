@@ -4,7 +4,7 @@
 	// to copy/paste the package manually with minor tweaks.
 	import { Connection } from '@solana/web3.js';
 	import type { Commitment, ConnectionConfig } from '@solana/web3.js';
-	import { workspaceStore } from './../stores/workspace-store';
+	import { workspaceStore } from '$lib/stores/workspace-store';
 	import { web3, Program, AnchorProvider } from '@project-serum/anchor';
 	import { walletStore, type WalletStore } from '@svelte-on-solana/wallet-adapter-core';
 

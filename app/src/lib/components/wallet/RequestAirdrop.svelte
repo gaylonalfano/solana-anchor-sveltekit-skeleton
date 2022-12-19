@@ -2,22 +2,23 @@
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import { workspaceStore } from '$lib/stores/workspace-store';
 	import { LAMPORTS_PER_SOL, type TransactionSignature, type PublicKey } from '@solana/web3.js';
-  import { goto } from '$app/navigation';
 	import { balanceStore } from '$lib/stores/balance-store';
-	import { notificationStore } from '$lib/stores/notification-store';
 	import { toastStore } from '@skeletonlabs/skeleton';
-	import type { ToastSettings } from '@skeletonlabs/skeleton';
 
-	async function onClick() {
+	async function handleRequestAirdrop() {
 		if (!$walletStore.connected) {
 			console.log('error', 'Wallet not connected!');
-			notificationStore.add({
-				type: 'error',
-				message: 'error',
-				description: 'Wallet not connected!'
+
+			toastStore.trigger({
+				message: 'Wallet not connected!',
+				autohide: true,
+				timeout: 3000,
+				classes: 'bg-warning-500 text-on-warning-token'
 			});
+
 			return;
 		}
+
 		let signature: TransactionSignature = '';
 		const { connection } = $workspaceStore;
 		const publicKey = $walletStore.publicKey as PublicKey;
@@ -40,15 +41,13 @@
 				timeout: 3000,
 				action: {
 					label: `${signature.slice(0, 8)}...`,
-					response: () => open(`https://explorer.solana.com/tx/${signature}?cluster=devnet`, "_blank")
+					response: () =>
+						open(`https://explorer.solana.com/tx/${signature}?cluster=devnet`, '_blank')
 				}
 			});
 
-			// notificationStore.add({ type: 'success', message: 'Airdrop successful!', txid: signature });
 			balanceStore.getUserSOLBalance(publicKey, connection);
-
 		} catch (error: any) {
-
 			toastStore.trigger({
 				message: 'Airdrop request failed!',
 				autohide: true,
@@ -56,12 +55,6 @@
 				classes: 'bg-warning-500 text-on-warning-token'
 			});
 
-			notificationStore.add({
-				type: 'error',
-				message: `Airdrop failed!`,
-				description: error?.message,
-				txid: signature
-			});
 			console.log('error', `Airdrop failed! ${error?.message}`, signature);
 		}
 	}
@@ -70,7 +63,11 @@
 </script>
 
 <div>
-	<button class="btn btn-filled-primary btn-base animate-pulse" on:click={onClick}>
+	<button
+		class="btn btn-filled-primary btn-lg animate-pulse"
+		on:click={handleRequestAirdrop}
+		disabled={!$walletStore.publicKey}
+	>
 		<span>Airdrop 1</span>
 		<span>◎</span>
 	</button>
