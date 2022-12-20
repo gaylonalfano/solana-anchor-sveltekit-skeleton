@@ -16,9 +16,11 @@ function createBalanceStore() {
 
 			try {
 
+        console.log('balance BEFORE getBalance(): ', balance);
 				balance = await connection.getBalance(publicKey, 'confirmed');
+        console.log('balance AFTER getBalance(): ', balance);
 				balance = balance / LAMPORTS_PER_SOL;
-        console.log('balanceStore.balance: ', balance);
+        // console.log('balanceStore.balance: ', balance);
 				set({ balance });
 
 			} catch (e) {

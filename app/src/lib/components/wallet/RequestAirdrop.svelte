@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import { workspaceStore } from '$lib/stores/workspace-store';
-	import { LAMPORTS_PER_SOL, type TransactionSignature, type PublicKey } from '@solana/web3.js';
+	import {
+		LAMPORTS_PER_SOL,
+		type TransactionSignature,
+		type PublicKey,
+		type BlockheightBasedTransactionConfirmationStrategy
+	} from '@solana/web3.js';
 	import { balanceStore } from '$lib/stores/balance-store';
 	import { toastStore } from '@skeletonlabs/skeleton';
 
@@ -25,13 +30,13 @@
 
 		try {
 			signature = await connection.requestAirdrop(publicKey, LAMPORTS_PER_SOL);
-
 			const latestBlockhash = await connection.getLatestBlockhash();
-			const confirmedTx = await connection.confirmTransaction({
+			const strategy: BlockheightBasedTransactionConfirmationStrategy = {
 				blockhash: latestBlockhash.blockhash,
 				lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
 				signature: signature
-			});
+			};
+			const confirmedTx = await connection.confirmTransaction(strategy, 'confirmed');
 			console.log('confirmedTx: ', confirmedTx);
 
 			// Use Skeleton's Toast component & toastStore.trigger(t: ToastSettings)
@@ -58,7 +63,6 @@
 			console.log('error', `Airdrop failed! ${error?.message}`, signature);
 		}
 	}
-
 </script>
 
 <div>

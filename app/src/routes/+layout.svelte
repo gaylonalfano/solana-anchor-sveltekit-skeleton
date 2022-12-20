@@ -65,12 +65,6 @@
 			<svelte:fragment slot="trail">
 				<a class="btn btn-sm btn-ghost-surface" href="/basics">Basics</a>
 				<a class="btn btn-sm btn-ghost-surface" href="/pdas">PDAs</a>
-				<a
-					class="btn btn-sm btn-ghost-surface"
-					href="https://github.com/skeletonlabs/skeleton"
-					target="_blank"
-					rel="noreferrer">GitHub</a
-				>
 				<WalletMultiButton maxNumberOfWallets={5} />
 			</svelte:fragment>
 		</AppBar>
