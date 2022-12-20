@@ -442,7 +442,7 @@
 
 				<label for="new-balance">
 					<span>New Balance</span>
-					<input type="text" id="new-balance" bind:value={newBalance} minlength="2" required />
+					<input type="text" id="new-balance" bind:value={newBalance} minlength="1" required />
 				</label>
 
 				<button class="btn btn-filled-surface">
@@ -485,7 +485,7 @@
 
 				<label for="operation-value">
 					<span>Operation Value</span>
-					<input type="text" id="operation-value" bind:value={operationValue} minlength="2" required />
+					<input type="text" id="operation-value" bind:value={operationValue} minlength="1" required />
 				</label>
 
 				<button class="btn btn-ghost-primary" type="submit">

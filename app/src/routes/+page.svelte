@@ -6,7 +6,6 @@
 	import RequestAirdrop from '$lib/components/wallet/RequestAirdrop.svelte';
 	import type { PublicKey } from '@solana/web3.js';
 	import { GradientHeading } from '@skeletonlabs/skeleton';
-  import PageShell from '$lib/components/ui/PageShell.svelte';
 
 	$: $walletStore.connected &&
 		balanceStore.getUserSOLBalance($walletStore.publicKey as PublicKey, $workspaceStore.connection);
@@ -21,6 +20,7 @@
 			from="from-primary-500"
 			to="to-accent-500">Solana+Anchor+Sveltekit+Skeleton</GradientHeading
 		>
+
 		<RequestAirdrop />
 
 		{#if $walletStore?.connected}
