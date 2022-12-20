@@ -21,11 +21,12 @@
 			to="to-accent-500">Solana+Anchor+Sveltekit+Skeleton</GradientHeading
 		>
 
-		<RequestAirdrop />
+      <RequestAirdrop />
 
-		{#if $walletStore?.connected}
-			<p>SOL Balance: {($balanceStore.balance || 0).toLocaleString()}</p>
-		{/if}
+      {#if $walletStore?.connected}
+        <p>SOL Balance: {($balanceStore.balance || 0).toLocaleString()}</p>
+        <!-- <h4>SOL Balance: {($balanceStore.balance || 0).toLocaleString()}</h4> -->
+      {/if}
 
   </div>
 </div>

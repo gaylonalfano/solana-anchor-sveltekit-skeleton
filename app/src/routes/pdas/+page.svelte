@@ -2,8 +2,11 @@
 	import * as anchor from '@project-serum/anchor';
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import { workspaceStore } from '$lib/stores/workspace-store';
-	import { GradientHeading } from '@skeletonlabs/skeleton';
+	import { Divider, GradientHeading } from '@skeletonlabs/skeleton';
 	import { toastStore } from '@skeletonlabs/skeleton';
+
+  // TODOS:
+  // - UI to list active Ledger accounts
 
 	let color = '';
 	let newBalance = '';
@@ -11,6 +14,22 @@
 	let operation: string;
 	let operationValue: string;
 	let fetchedLedgerAccount;
+
+  // NOTE Just for UI testing
+  let ledgers = [
+    {
+      color: 'blue',
+      balance: 23
+    },
+    {
+      color: 'yellow',
+      balance: 2
+    },
+    {
+      color: 'orange',
+      balance: 11
+    }
+  ]
 
 	async function generateKeypair() {
 		// Ensure that new wallet keypair has enough SOL
@@ -382,7 +401,12 @@
 	<div class="card">
 		<header class="card-header space-y-4">
 			<h2>Create Ledger</h2>
-			<p>Each ledger account is saved inside a PDA with a account structure of <code>color: string, balance: number</code> and with unique <code>seeds</code> to later fetch and modify account data.</p>
+			<p>
+				Each ledger account is saved inside a PDA with a account structure of <code
+					>color: string, balance: number</code
+				>
+				and with unique <code>seeds</code> to later fetch and modify account data.
+			</p>
 		</header>
 		<div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
 			<form class="space-y-4" on:submit|preventDefault={handleCreateLedgerAccount}>
@@ -391,7 +415,7 @@
 					<input type="text" id="color" bind:value={color} minlength="2" required />
 				</label>
 
-				<button class="btn btn-ringed-primary" type="submit">
+				<button class="btn btn-ghost-primary" type="submit">
 					<span>💀</span>
 					<span>Create Ledger</span>
 					<span>🦴</span>
@@ -421,7 +445,7 @@
 					<input type="text" id="seed" bind:value={seed} minlength="2" required />
 				</label>
 
-				<button class="btn btn-filled-accent" type="submit">
+				<button class="btn btn-ghost" type="submit">
 					<span>💀</span>
 					<span>Get Ledger</span>
 					<span>🦴</span>
@@ -476,7 +500,7 @@
 				<label for="operation">
 					<span>Operation</span>
 					<select name="operation" id="operation" bind:value={operation}>
-            <option value="1" selected>+</option>
+						<option value="1" selected>+</option>
 						<option value="2">-</option>
 						<option value="3">*</option>
 						<option value="4">Reset</option>
@@ -485,7 +509,13 @@
 
 				<label for="operation-value">
 					<span>Operation Value</span>
-					<input type="text" id="operation-value" bind:value={operationValue} minlength="1" required />
+					<input
+						type="text"
+						id="operation-value"
+						bind:value={operationValue}
+						minlength="1"
+						required
+					/>
 				</label>
 
 				<button class="btn btn-ghost-primary" type="submit">
@@ -496,4 +526,20 @@
 			</form>
 		</div>
 	</div>
+
+	<!-- List of Ledgers -->
+  <Divider />
+
+	<dl class="list-dl">
+    {#each ledgers as ledger}
+      <div>
+        <span class="badge bg-primary-500">💀</span>
+        <span class="flex-auto">
+          <dt>{ledger.color}</dt>
+          <dd>{ledger.balance}</dd>
+        </span>
+      </div>
+    {/each}
+		<!-- ... -->
+	</dl>
 </div>

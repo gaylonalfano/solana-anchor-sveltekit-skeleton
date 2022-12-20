@@ -12,7 +12,7 @@
 			from="from-primary-500"
 			to="to-accent-500">Basics</GradientHeading
 		>
-		<div class="card flex flex-col space-y-4">
+		<div class="flex flex-col space-y-4">
 			<SignMessage />
 			<SendTransaction />
 		</div>

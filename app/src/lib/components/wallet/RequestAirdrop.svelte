@@ -29,6 +29,8 @@
 		const publicKey = $walletStore.publicKey as PublicKey;
 
 		try {
+      // U: Using latest confirmTransaction() signature:
+      // REF: https://solana-labs.github.io/solana-web3.js/classes/Connection.html#confirmTransaction
 			signature = await connection.requestAirdrop(publicKey, LAMPORTS_PER_SOL);
 			const latestBlockhash = await connection.getLatestBlockhash();
 			const strategy: BlockheightBasedTransactionConfirmationStrategy = {

@@ -1,5 +1,8 @@
 <script lang="ts">
 	import '@skeletonlabs/skeleton/themes/theme-gold-nouveau.css';
+	// import '@skeletonlabs/skeleton/themes/theme-crimson.css';
+	// import '@skeletonlabs/skeleton/themes/theme-hamlindigo.css';
+	// import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
