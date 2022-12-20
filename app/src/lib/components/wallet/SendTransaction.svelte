@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { walletStore } from '@svelte-on-solana/wallet-adapter-core';
 	import { workspaceStore } from '$lib/stores/workspace-store';
-	import { Keypair, SystemProgram, Transaction, type TransactionSignature } from '@solana/web3.js';
+	import { Keypair, SystemProgram, Transaction, type TransactionSignature, LAMPORTS_PER_SOL } from '@solana/web3.js';
 	import { toastStore } from '@skeletonlabs/skeleton';
 
 	$: ({ publicKey, sendTransaction } = $walletStore);
@@ -28,7 +28,7 @@
 				SystemProgram.transfer({
 					fromPubkey: publicKey,
 					toPubkey: Keypair.generate().publicKey,
-					lamports: 1
+					lamports: LAMPORTS_PER_SOL / 2 // Send .5 SOL
 				})
 			);
 
