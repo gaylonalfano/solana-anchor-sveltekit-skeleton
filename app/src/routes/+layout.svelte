@@ -9,7 +9,6 @@
 	import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
 	import idl from '../../../target/idl/solana_anchor_sveltekit_skeleton_starter.json';
 	import { browser } from '$app/environment';
-	import NotificationList from '$lib/components/ui/NotificationList.svelte';
 	import { Toast } from '@skeletonlabs/skeleton';
 
 	const localStorageKey = 'walletAdapter';
@@ -37,11 +36,7 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a class="btn btn-sm btn-ghost-surface" href="/basics">Basics</a>
-				<a
-					class="btn btn-sm btn-ghost-surface"
-					href="/pdas"
-					>PDAs</a
-				>
+				<a class="btn btn-sm btn-ghost-surface" href="/pdas">PDAs</a>
 				<a
 					class="btn btn-sm btn-ghost-surface"
 					href="https://github.com/skeletonlabs/skeleton"
@@ -57,18 +52,18 @@
 	<Toast />
 	<svelte:fragment slot="pageFooter">
 		<div class="logo-cloud grid-cols-1 sm:grid-cols-3 gap-1">
-      <a class="logo-item" href="https://svelte.dev/" target="_blank" rel="noreferrer">
-					<!-- <span><SvgIcon name="svelte" width="w-8" height="h-8" /></span> -->
-					<span>Svelte</span>
-				</a>
-				<a class="logo-item" href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-					<!-- <span><SvgIcon name="tailwind" width="w-6" height="h-6" /></span> -->
-					<span>Tailwind</span>
-				</a>
-				<a class="logo-item" href="https://github.com/" target="_blank" rel="noreferrer">
-					<!-- <span><SvgIcon name="github" width="w-6" height="h-6" /></span> -->
-					<span>Github</span>
-				</a>
+			<a class="logo-item" href="https://svelte.dev/" target="_blank" rel="noreferrer">
+				<!-- <span><SvgIcon name="svelte" width="w-8" height="h-8" /></span> -->
+				<span>Svelte</span>
+			</a>
+			<a class="logo-item" href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
+				<!-- <span><SvgIcon name="tailwind" width="w-6" height="h-6" /></span> -->
+				<span>Tailwind</span>
+			</a>
+			<a class="logo-item" href="https://github.com/" target="_blank" rel="noreferrer">
+				<!-- <span><SvgIcon name="github" width="w-6" height="h-6" /></span> -->
+				<span>Github</span>
+			</a>
 		</div>
 	</svelte:fragment>
 </AppShell>
